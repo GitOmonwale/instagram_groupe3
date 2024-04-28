@@ -34,14 +34,10 @@ class HomePage extends StatelessWidget {
             ),
             onPressed: () {},
           ),
-          IconButton(
-            icon: Image.asset(
-              'assets/images/messenger.jpeg',
-              width: 35,
-              height: 35,
-            ),
-            onPressed: () {},
-          ),
+          Icon(
+                Icons.sms,
+                size: 30,
+              ),
           IconButton(
             icon: Image.asset(
               'assets/images/brightness.jpeg',
@@ -53,11 +49,9 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body:  
-      Column(
-        
-
-         children: [
-          Container(
+      ListView(
+        children: [
+                    Container(
             height: 100,
 
 
@@ -150,10 +144,8 @@ class HomePage extends StatelessWidget {
                 ),
            
            
-         ]
-        
-
-        
+         
+        ],
       ),
       bottomNavigationBar: const Padding(
         padding: EdgeInsets.only(bottom: 18),
