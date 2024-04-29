@@ -1,10 +1,27 @@
-
-import 'package:application/models/all_story.dart';
+ 
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
+   HomePage({super.key});
+List<String> ImageUrls = [
+  'https://source.unsplash.com/50x50/?portrait,face',
+    'https://www.behance.net/gallery/136530019/Tomas-Sanchez?tracking_source=search_projects&l=10',
+    'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+     'https://images.unsplash.com/photo-1546881963-ac8d67aee789?q=80&w=1579&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+     'https://images.unsplash.com/photo-1457301547464-91995555cd25?q=80&w=1496&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+     'https://images.unsplash.com/photo-1706606999710-72658165a73d?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  ];
+List<String> imageTitles = [
+    'Votre story',
+    'Faithfull',
+    'Ray',
+    'Mindset',
+    'Club dev',
+    'Black',
+    'Iron'
+   
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,15 +35,15 @@ class HomePage extends StatelessWidget {
           color: Colors.grey[600],
         ),
         titleSpacing: 2,
-        title: const Text(
-          'Instagram',
-          style: TextStyle(
-            fontFamily: 'Billabong',
-            fontSize: 36,
-            color: Colors.black,
-          ),
-        ),
+      
         actions: [
+           IconButton(
+            icon:SizedBox(
+             child: Image.network('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/800px-Instagram_logo.svg.png'),
+               width: 150,
+            ),
+            onPressed: () {},
+          ),
           IconButton(
             icon: Icon(
               Icons.settings,
@@ -52,37 +69,52 @@ class HomePage extends StatelessWidget {
       ListView(
         children: [
                     Container(
-            height: 100,
-
-
+                      
+            height: 150,
             child: ListView.builder(
-
               scrollDirection: Axis.horizontal,
 
-              itemCount: 10, // Nombre de stories
+              itemCount: ImageUrls.length, 
               itemBuilder: (context, index) {
-                return Stack(
+                return Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: CircleAvatar(
-                        radius: 32, // Augmentez le rayon pour créer un cercle autour de la story
-                        backgroundColor: Colors.grey[300], // Couleur du cercle autour de la story
-                      ),
+                    Stack(
+                  
+                      children: [
+                         
+                        Padding(
+                          
+                          padding: const EdgeInsets.all(8.0),
+                          child: CircleAvatar(
+                            
+                            radius: 32,
+                            backgroundColor: Colors.grey[300], 
+                          ),
+                        ),
+                        Padding(
+                        
+                          padding: const EdgeInsets.all(8.0),
+                          child: CircleAvatar(
+                            
+                            radius: 30,
+                            backgroundColor: Colors.grey,
+                            backgroundImage: NetworkImage(
+                                ImageUrls[index]),
+                             
+                          ),
+                        ),
+                      ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: CircleAvatar(
-                        radius: 30,
-                        backgroundColor: Colors.grey,
-                        backgroundImage: NetworkImage(
-                            'https://source.unsplash.com/100x100/?portrait,face'),
-                        // Ajoutez l'image de profil ici
-                      ),
+                     SizedBox(height: 8),
+                    Text(
+                      imageTitles[index],
+                      style: TextStyle(fontSize: 16),
                     ),
                   ],
                 );
+                
               },
+             
             ),
           ),
 
